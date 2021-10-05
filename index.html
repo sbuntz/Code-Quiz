@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./assets/style.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon_io/favicon-16x16.png">
+
+    <title>Javascript Code Quiz</title>
+</head>
+
+<body>
+    <header>
+        <button id="view-scores" type="button">View High Scores</button>
+        <p class="time">Time:75s</p>
+    </header>
+    <main class="container">
+        <div id="intro">
+            <h1>Coding Quiz!</h1>
+            <p>Try to answer the following javascript code questions within the time limit. </p>
+
+            <p>Keep in mind that incorrect answers will penalize your time by ten seconds!</p>
+            <button id="start" type="button">Start Quiz</button></p>
+        </div>
+
+        <div id="quiz">
+            <div id="question"></div>
+            <div id="answerOptions">
+                <ul>
+                    <li><button id="answer1" type="button" onclick="checkAnswer(booleans)"></button></li>
+                    <li><button id="answer2" type="button"></button></li>
+                    <li><button id="answer3" type="button"></button></li>
+                    <li><button id="answer4" type="button"></button></li>
+                </ul>
+            </div>
+        </div>
+        <div id="finalScore">
+            <h2>Well Done!</h2>
+            <p>Your final score is: <span id="score">0</span></p>
+            <p>Enter your initials: <span><input placeholder="initials" id="initials" /></span>
+                <button id="submit-score">Submit</button>
+            </p>
+        </div>
+        <section id="highscores">
+            <h2>High Scores</h2>
+            <ol id="score-list"></ol>
+            <button id="goback">Go back</button>
+            <button id="clearscores">Clear scores</button>
+            </div>
+    </main>
+    <script src="./assets/script.js"></script>
+</body>
+
+</html>

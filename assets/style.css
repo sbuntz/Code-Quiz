@@ -1,0 +1,101 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:900|Roboto+Mono:300,400,700);
+
+
+:root {
+    --dark: rgb(48, 48, 48);
+    --light: rgb(253, 253, 253);
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: Roboto Mono;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-weight: 100;
+    color: var(--light);
+    background-color: var(--dark);
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+header {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    color: var(--dark);
+    background-color: var(--light);
+    padding: 0.5% 1% 0.5% 1%;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+header button {
+    color: var(--dark);
+    background-color: var(--light);
+    border-color: transparent;
+    padding: 5px 10px;
+    font-size: 15px;
+}
+
+header p {
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+.container  {
+    padding: 0.5% 1% 0.5% 1%;
+    margin: 0;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.container p {
+    line-height: 1.15;
+    padding: 0.5% 1% 0.5% 1%;
+}
+
+#start {
+    padding: 0.5% 1% 0.5% 1%;
+    margin-top: 10px;
+    height: 50px;
+    width: 100px;
+}
+
+#answer1 {
+    border: none;
+    border-radius: 5px;
+    width: 160px;
+    height: 30px;
+    color: var(--dark);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-top: 2px;
+    font-size: small;
+    text-align: left;
+    outline: none;
+}
+
+
