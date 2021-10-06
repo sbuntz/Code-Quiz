@@ -27,18 +27,18 @@ var questions = [{
 ];
 
 
-/
+
 
 var timer = document.getElementById("timer");
 var timeLeft = document.getElementById("timeLeft");
 var timesUp = document.getElementById("timesUp");
 
-var startDiv = document.getElementById("intro");
+var startEL = document.getElementById("intro");
 var startQuizBtn = document.getElementById("startQuiz");
 
 //Questions
 var questionSectionEL = document.getElementById("questionSection");
-var questionTitle = document.getElementById("questionTitle");
+var questionEL = document.getElementById("questionTitle");
 var choiceA = document.getElementById("btn0");
 var choiceB = document.getElementById("btn1");
 var choiceC = document.getElementById("btn2");
@@ -46,17 +46,15 @@ var choiceD = document.getElementById("btn3");
 var answerCheckEL = document.getElementById("answerCheck");
 
 //ScoreSection
-var ScoreSectionEL = document.getElementById("ScoreSection");
+var ScoreSectionEL = document.getElementById("scoreSection");
 var submitInitialBtn = document.getElementById("submitInitial");
-var initialInput = document.getElementById("initialInput");
-var container = document.getElementById("container");
+var initialInputEL = document.getElementById("initialInput");
 
-var highScoreSection = document.getElementById("highScoreSection");
-var finalScore = document.getElementById("finalScore");
+var highScoreSectionEL = document.getElementById("highScoreSection");
+var finalScoreEL = document.getElementById("finalScore");
 
 var goBackBtn = document.getElementById("goBack");
 var clearHighScoreBtn = document.getElementById("clearHighScore");
-
 
 var viewHighScore = document.getElementById("viewHighScores");
 var listOfHighScores = document.getElementById("HighScoresList");
@@ -77,9 +75,9 @@ function newQuiz() {
     questionIndex = 0;
     totalTime = 75;
     timeLeft.textContent = totalTime;
-    initialInput.textContent = "";
+    initialInputEL.textContent = "";
 
-    startDiv.style.display = "none";
+    startEL.style.display = "none";
     questionSectionEL.style.display = "block";
     timer.style.display = "block";
     timesUp.style.display = "none";
@@ -104,7 +102,7 @@ function showQuiz() {
 }
 
 function nextQuestion() {
-    questionTitle.textContent = questions[questionIndex].question;
+    questionEL.textContent = questions[questionIndex].question;
     choiceA.textContent = questions[questionIndex].choices[0];
     choiceB.textContent = questions[questionIndex].choices[1];
     choiceC.textContent = questions[questionIndex].choices[2];
@@ -157,25 +155,25 @@ function chooseD() {
 function gameOver() {
     ScoreSectionEL.style.display = "block";
     questionSectionEL.style.display = "none";
-    startDiv.style.display = "none";
+    startEL.style.display = "none";
     timer.style.display = "none";
     timesUp.style.display = "block";
 
-    finalScore.textContent = correctAns;
+    finalScoreEL.textContent = correctAns;
 }
 
 function storeHighScores(event) {
     event.preventDefault();
-    if (initialInput.value === "") {
+    if (initialInputEL.value === "") {
         alert("Please enter your initials!");
         return;
     }
 
-    startDiv.style.display = "none";
+    startEL.style.display = "none";
     timer.style.display = "none";
     timesUp.style.display = "none";
     ScoreSectionEL.style.display = "none";
-    highScoreSection.style.display = "block";
+    highScoreSectionEL.style.display = "block";
 
     
     var savedHighScores = localStorage.getItem("high scores");
@@ -188,8 +186,8 @@ function storeHighScores(event) {
     }
 
     var userScore = {
-        initials: initialInput.value,
-        score: finalScore.textContent
+        initials: initialInputEL.value,
+        score: finalScoreEL.textContent
     };
 
     console.log(userScore);
@@ -205,12 +203,12 @@ var i = 0;
 
 function showHighScores() {
 
-    startDiv.style.display = "none";
+    startEL.style.display = "none";
     timer.style.display = "none";
     questionSectionEL.style.display = "none";
     timesUp.style.display = "none";
     ScoreSectionEL.style.display = "none";
-    highScoreSection.style.display = "block";
+    highScoreSectionEL.style.display = "block";
 
     var savedHighScores = localStorage.getItem("high scores");
 
@@ -242,8 +240,8 @@ submitInitialBtn.addEventListener("click", function (event) {
 viewHighScore.addEventListener("click", showHighScores);
 
 goBackBtn.addEventListener("click", function () {
-    startDiv.style.display = "block";
-    highScoreSection.style.display = "none";
+    startEL.style.display = "block";
+    highScoreSectionEL.style.display = "none";
 });
 
 clearHighScoreBtn.addEventListener("click", function () {

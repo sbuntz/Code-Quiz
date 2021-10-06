@@ -88,16 +88,16 @@ button {
     padding: 70px 0 10px 20px;
 }
 
-#ScoreSection h2 {
+#scoreSection h2 {
     padding: 70px 0 20px 0;
     font-size: 30px;
     font-weight: 200;
 }
 
-#ScoreSection p {
+#scoreSection p {
     padding: 0 0 20px 0;
 }
-#ScoreSection input {
+#scoreSection input {
     height: 30px;
     width: 100px;
 }
@@ -112,7 +112,7 @@ button {
 }
 
 #goBack, #clearHighScore {
-    font-size: 11px;
+    font-size: 12px;
 }
 
 #lineBreak {
