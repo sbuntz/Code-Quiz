@@ -47,7 +47,7 @@ header {
     line-height: 1;
 }
 
-header button {
+header a {
     color: var(--dark);
     background-color: var(--light);
     border-color: transparent;
@@ -66,36 +66,22 @@ header p {
     text-align: center;
 }
 
-.container h1 {
+.container #start h1 {
     font-size: 40px;
     font-weight: 400;
+    padding: 100px 0 0 0;
 }
 
-.container p {
+.container #start p {
     line-height: 1.15;
     padding: 0.5% 1% 0.5% 1%;
 }
 
-#start {
+#start-quiz-button {
     padding: 0.5% 1% 0.5% 1%;
     margin-top: 10px;
     height: 50px;
     width: 100px;
-}
-
-#answer1 {
-    border: none;
-    border-radius: 5px;
-    width: 160px;
-    height: 30px;
-    color: var(--dark);
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-left: 10px;
-    padding-top: 2px;
-    font-size: small;
-    text-align: left;
-    outline: none;
 }
 
 
