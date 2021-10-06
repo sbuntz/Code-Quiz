@@ -85,7 +85,7 @@ button {
 }
 
 #questionSection {
-    padding: 70px 0 10px 0;
+    padding: 70px 0 10px 20px;
 }
 
 #ScoreSection h2 {
@@ -113,4 +113,8 @@ button {
 
 #goBack, #clearHighScore {
     font-size: 12px;
+}
+
+#lineBreak {
+    margin: 10px;
 }

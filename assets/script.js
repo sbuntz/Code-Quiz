@@ -1,29 +1,30 @@
 //arrray of the quiz questions, avaialble choices, and correct answers     
 var questions = [{
-    question: "Commonly used data types DO NOT include:",
-    choices: ["strings", "booleans", "alerts", "numbers"],
-    answer: "alerts"
-},
-{
-    question: "The condition in an if / else statement is enclosed within ____.",
-    choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-    answer: "parentheses"
-},
-{
-    question: "Arrays in Javascript can be used to store ____.",
-    choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-    answer: "all of the above"
-},
-{
-    question: "String values must be enclosed within ____ when being assigned to variables.",
-    choices: ["commas", "curly brackets", "quotes", "parenthesis"],
-    answer: "quotes"
-},
-{
-    question: "A very useful tool for used during development and debugging for printing content to the debugger is:",
-    choices: ["Javascript", "terminal / bash", "for loops", "console log"],
-    answer: "console log"
-}];
+        question: "Commonly used data types DO NOT include:",
+        choices: ["strings", "booleans", "alerts", "numbers"],
+        answer: "alerts"
+    },
+    {
+        question: "The condition in an if / else statement is enclosed within ____.",
+        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+        answer: "parentheses"
+    },
+    {
+        question: "Arrays in Javascript can be used to store ____.",
+        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+        answer: "all of the above"
+    },
+    {
+        question: "String values must be enclosed within ____ when being assigned to variables.",
+        choices: ["commas", "curly brackets", "quotes", "parenthesis"],
+        answer: "quotes"
+    },
+    {
+        question: "A very useful tool for used during development and debugging for printing content to the debugger is:",
+        choices: ["Javascript", "terminal / bash", "for loops", "console log"],
+        answer: "console log"
+    }
+];
 
 
 
@@ -42,7 +43,7 @@ var choiceA = document.getElementById("btn0");
 var choiceB = document.getElementById("btn1");
 var choiceC = document.getElementById("btn2");
 var choiceD = document.getElementById("btn3");
-var answerCheck = document.getElementById("answerCheck");
+var answerCheckEL = document.getElementById("answerCheck");
 
 var summary = document.getElementById("ScoreSection");
 var submitInitialBtn = document.getElementById("submitInitial");
@@ -54,8 +55,8 @@ var finalScore = document.getElementById("finalScore");
 
 var goBackBtn = document.getElementById("goBack");
 var clearHighScoreBtn = document.getElementById("clearHighScore");
-var viewHighScore = document.getElementById("viewHighScore");
-var listOfHighScores = document.getElementById("listHighScores");
+var viewHighScore = document.getElementById("viewHighScores");
+var listOfHighScores = document.getElementById("HighScoresList");
 
 
 var correctAns = 0;
@@ -111,22 +112,20 @@ function nextQuestion() {
 function checkAnswer(answer) {
 
     if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
-        // correct answer, add 1 score to final score
-        correctAns++;
-        // console.log(correctAns);
-        var correctAnswer = document.createElement('p');
-        correctAnswer.textContent = "Correct!";
-        questionSectionEL.append(correctAnswer);
 
+        var lineBreak = document.getElementById("lineBreak");
+        lineBreak.style.display = "block";
+
+        answerCheck.style.display = "block";
+        correctAns++;
+        answerCheck.textContent = "Correct!";
     } else {
-        // wrong answer, deduct 10 second from timer
+        answerCheck.style.display = "block";
         totalTime -= 10;
         timeLeft.textContent = totalTime;
         answerCheck.textContent = "Wrong! The correct answer is: " + questions[questionIndex].answer;
     }
-
     questionIndex++;
-    // repeat with the rest of questions 
     if (questionIndex < questions.length) {
         nextQuestion();
     } else {
@@ -151,7 +150,7 @@ function chooseD() {
     checkAnswer(3);
 }
 
-// when all questions are answered or timer reaches 0, game over
+
 function gameOver() {
     summary.style.display = "block";
     questionSectionEL.style.display = "none";
@@ -159,15 +158,11 @@ function gameOver() {
     timer.style.display = "none";
     timesUp.style.display = "block";
 
-    // show final score
     finalScore.textContent = correctAns;
 }
 
-// enter initial and store highscore in local storage
 function storeHighScores(event) {
     event.preventDefault();
-
-    // stop function is initial is blank
     if (initialInput.value === "") {
         alert("Please enter your initials!");
         return;
@@ -179,7 +174,7 @@ function storeHighScores(event) {
     summary.style.display = "none";
     highScoreSection.style.display = "block";
 
-    // store scores into local storage
+    
     var savedHighScores = localStorage.getItem("high scores");
     var scoresArray;
 
@@ -197,15 +192,12 @@ function storeHighScores(event) {
     console.log(userScore);
     scoresArray.push(userScore);
 
-    // stringify array in order to store in local
     var scoresArrayString = JSON.stringify(scoresArray);
     window.localStorage.setItem("high scores", scoresArrayString);
 
-    // show current highscores
     showHighScores();
 }
 
-// function to show high scores
 var i = 0;
 
 function showHighScores() {
@@ -219,7 +211,6 @@ function showHighScores() {
 
     var savedHighScores = localStorage.getItem("high scores");
 
-    // check if there is any in local storage
     if (savedHighScores === null) {
         return;
     }
@@ -234,9 +225,6 @@ function showHighScores() {
     }
 }
 
-/**
- * ADD EVENT LISTENERS
- */
 
 startQuizBtn.addEventListener("click", newQuiz);
 choiceA.addEventListener("click", chooseA);
