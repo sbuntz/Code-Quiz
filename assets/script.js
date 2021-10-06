@@ -27,9 +27,8 @@ var questions = [{
 ];
 
 
+/
 
-
-// grab references to elements
 var timer = document.getElementById("timer");
 var timeLeft = document.getElementById("timeLeft");
 var timesUp = document.getElementById("timesUp");
@@ -37,6 +36,7 @@ var timesUp = document.getElementById("timesUp");
 var startDiv = document.getElementById("intro");
 var startQuizBtn = document.getElementById("startQuiz");
 
+//Questions
 var questionSectionEL = document.getElementById("questionSection");
 var questionTitle = document.getElementById("questionTitle");
 var choiceA = document.getElementById("btn0");
@@ -45,7 +45,8 @@ var choiceC = document.getElementById("btn2");
 var choiceD = document.getElementById("btn3");
 var answerCheckEL = document.getElementById("answerCheck");
 
-var summary = document.getElementById("ScoreSection");
+//ScoreSection
+var ScoreSectionEL = document.getElementById("ScoreSection");
 var submitInitialBtn = document.getElementById("submitInitial");
 var initialInput = document.getElementById("initialInput");
 var container = document.getElementById("container");
@@ -55,6 +56,8 @@ var finalScore = document.getElementById("finalScore");
 
 var goBackBtn = document.getElementById("goBack");
 var clearHighScoreBtn = document.getElementById("clearHighScore");
+
+
 var viewHighScore = document.getElementById("viewHighScores");
 var listOfHighScores = document.getElementById("HighScoresList");
 
@@ -152,7 +155,7 @@ function chooseD() {
 
 
 function gameOver() {
-    summary.style.display = "block";
+    ScoreSectionEL.style.display = "block";
     questionSectionEL.style.display = "none";
     startDiv.style.display = "none";
     timer.style.display = "none";
@@ -171,7 +174,7 @@ function storeHighScores(event) {
     startDiv.style.display = "none";
     timer.style.display = "none";
     timesUp.style.display = "none";
-    summary.style.display = "none";
+    ScoreSectionEL.style.display = "none";
     highScoreSection.style.display = "block";
 
     
@@ -206,7 +209,7 @@ function showHighScores() {
     timer.style.display = "none";
     questionSectionEL.style.display = "none";
     timesUp.style.display = "none";
-    summary.style.display = "none";
+    ScoreSectionEL.style.display = "none";
     highScoreSection.style.display = "block";
 
     var savedHighScores = localStorage.getItem("high scores");
