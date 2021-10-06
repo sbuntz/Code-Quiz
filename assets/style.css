@@ -66,22 +66,51 @@ header p {
     text-align: center;
 }
 
-.container #start h1 {
+.container #intro h1 {
     font-size: 40px;
     font-weight: 400;
     padding: 100px 0 0 0;
 }
 
-.container #start p {
+.container #intro p {
     line-height: 1.15;
     padding: 0.5% 1% 0.5% 1%;
 }
 
-#start-quiz-button {
+button {
     padding: 0.5% 1% 0.5% 1%;
     margin-top: 10px;
     height: 50px;
+    width: 150px;
+}
+
+#questionSection {
+    padding: 70px 0 10px 0;
+}
+
+#ScoreSection h2 {
+    padding: 70px 0 20px 0;
+    font-size: 30px;
+    font-weight: 200;
+}
+
+#ScoreSection p {
+    padding: 0 0 20px 0;
+}
+#ScoreSection input {
+    height: 30px;
     width: 100px;
 }
 
+#highScoreSection h2 {
+    padding: 70px 0 20px 0;
+    font-size: 30px;
+    font-weight: 200;
+}
+#listHighScores {
+    padding: 0 0 20px 0;
+}
 
+#goBack, #clearHighScore {
+    font-size: 12px;
+}

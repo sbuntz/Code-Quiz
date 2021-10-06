@@ -1,28 +1,28 @@
 //arrray of the quiz questions, avaialble choices, and correct answers     
 var questions = [{
-    question: "Which of the following function of an array object adds one or more elements to the front of an array and returns the new length of the array?",
-    choices: ["unshift( )", "sort( )", "splice( )", "toString( )"],
-    answer: "unshift( )"
+    question: "Commonly used data types DO NOT include:",
+    choices: ["strings", "booleans", "alerts", "numbers"],
+    answer: "alerts"
 },
 {
-    question: "Which built-in method adds one or more elements to the end of an array and returns the new length of the array?",
-    choices: ["last( )", "put( )", "push( )", "pop( )"],
-    answer: "push( )"
+    question: "The condition in an if / else statement is enclosed within ____.",
+    choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+    answer: "parentheses"
 },
 {
-    question: " Which built-in method returns the characters in a string beginning at the specified location?",
-    choices: ["substr( )", "getSubstring( )", "slice( )", "None of the above."],
-    answer: "substr( )"
+    question: "Arrays in Javascript can be used to store ____.",
+    choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+    answer: "all of the above"
 },
 {
-    question: "Which of the following function of an array object adds and/or removes elements from an array?",
-    choices: ["toSource( )", "sort( )", "unshift( )", "splice( )"],
-    answer: "splice( )"
+    question: "String values must be enclosed within ____ when being assigned to variables.",
+    choices: ["commas", "curly brackets", "quotes", "parenthesis"],
+    answer: "quotes"
 },
 {
-    question: "Which of the following function of String object combines the text of two strings and returns a new string?",
-    choices: ["add( )", "concat( )", " merge( )", "append( )"],
-    answer: "concat( )"
+    question: "A very useful tool for used during development and debugging for printing content to the debugger is:",
+    choices: ["Javascript", "terminal / bash", "for loops", "console log"],
+    answer: "console log"
 }];
 
 
@@ -33,10 +33,10 @@ var timer = document.getElementById("timer");
 var timeLeft = document.getElementById("timeLeft");
 var timesUp = document.getElementById("timesUp");
 
-var startDiv = document.getElementById("start");
-var startQuizBtn = document.getElementById("start-quiz-button");
+var startDiv = document.getElementById("intro");
+var startQuizBtn = document.getElementById("startQuiz");
 
-var questionDiv = document.getElementById("questionDiv");
+var questionSectionEL = document.getElementById("questionSection");
 var questionTitle = document.getElementById("questionTitle");
 var choiceA = document.getElementById("btn0");
 var choiceB = document.getElementById("btn1");
@@ -44,61 +44,57 @@ var choiceC = document.getElementById("btn2");
 var choiceD = document.getElementById("btn3");
 var answerCheck = document.getElementById("answerCheck");
 
-var summary = document.getElementById("summary");
-var submitInitialBtn = document.getElementById("submitInitialBtn");
+var summary = document.getElementById("ScoreSection");
+var submitInitialBtn = document.getElementById("submitInitial");
 var initialInput = document.getElementById("initialInput");
 var container = document.getElementById("container");
 
 var highScoreSection = document.getElementById("highScoreSection");
 var finalScore = document.getElementById("finalScore");
 
-var goBackBtn = document.getElementById("goBackBtn");
-var clearHighScoreBtn = document.getElementById("clearHighScoreBtn"); 
+var goBackBtn = document.getElementById("goBack");
+var clearHighScoreBtn = document.getElementById("clearHighScore");
 var viewHighScore = document.getElementById("viewHighScore");
-var listOfHighScores = document.getElementById("listOfHighScores");
+var listOfHighScores = document.getElementById("listHighScores");
 
-// define other variables
+
 var correctAns = 0;
 var questionNum = 0;
 var scoreResult;
 var questionIndex = 0;
 
 
-/**
- * FUNCTIONS
- */
 
-// WHEN I click the start button, timer starts
-var totalTime = 151;
+// Time
+
+var totalTime = 75;
+
 function newQuiz() {
     questionIndex = 0;
-    totalTime = 150;
+    totalTime = 75;
     timeLeft.textContent = totalTime;
     initialInput.textContent = "";
 
     startDiv.style.display = "none";
-    questionDiv.style.display = "block";
+    questionSectionEL.style.display = "block";
     timer.style.display = "block";
     timesUp.style.display = "none";
 
-    var startTimer = setInterval(function() {
+    var startTimer = setInterval(function () {
         totalTime--;
         timeLeft.textContent = totalTime;
-        if(totalTime <= 0) {
+        if (totalTime <= 0) {
             clearInterval(startTimer);
             if (questionIndex < questions.length - 1) {
                 gameOver();
             }
         }
-    },1000);
+    }, 1000);
 
     showQuiz();
 };
 
-// console.log(questions[questionIndex].question);
-// console.log(questions[questionIndex].choices);
-
-// then presented with questions and choices
+//Questions
 function showQuiz() {
     nextQuestion();
 }
@@ -111,18 +107,17 @@ function nextQuestion() {
     choiceD.textContent = questions[questionIndex].choices[3];
 }
 
-// after question is answered, show if correct or wrong
+// Answers
 function checkAnswer(answer) {
-
-    var lineBreak = document.getElementById("lineBreak");
-    lineBreak.style.display = "block";
-    answerCheck.style.display = "block";
 
     if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
         // correct answer, add 1 score to final score
         correctAns++;
         // console.log(correctAns);
-        answerCheck.textContent = "Correct!";
+        var correctAnswer = document.createElement('p');
+        correctAnswer.textContent = "Correct!";
+        questionSectionEL.append(correctAnswer);
+
     } else {
         // wrong answer, deduct 10 second from timer
         totalTime -= 10;
@@ -140,18 +135,26 @@ function checkAnswer(answer) {
     }
 }
 
-function chooseA() { checkAnswer(0); }
+function chooseA() {
+    checkAnswer(0);
+}
 
-function chooseB() { checkAnswer(1); }
+function chooseB() {
+    checkAnswer(1);
+}
 
-function chooseC() { checkAnswer(2); }
+function chooseC() {
+    checkAnswer(2);
+}
 
-function chooseD() { checkAnswer(3); }
+function chooseD() {
+    checkAnswer(3);
+}
 
 // when all questions are answered or timer reaches 0, game over
 function gameOver() {
     summary.style.display = "block";
-    questionDiv.style.display = "none";
+    questionSectionEL.style.display = "none";
     startDiv.style.display = "none";
     timer.style.display = "none";
     timesUp.style.display = "block";
@@ -168,13 +171,13 @@ function storeHighScores(event) {
     if (initialInput.value === "") {
         alert("Please enter your initials!");
         return;
-    } 
+    }
 
     startDiv.style.display = "none";
     timer.style.display = "none";
     timesUp.style.display = "none";
     summary.style.display = "none";
-    highScoreSection.style.display = "block";   
+    highScoreSection.style.display = "block";
 
     // store scores into local storage
     var savedHighScores = localStorage.getItem("high scores");
@@ -197,18 +200,19 @@ function storeHighScores(event) {
     // stringify array in order to store in local
     var scoresArrayString = JSON.stringify(scoresArray);
     window.localStorage.setItem("high scores", scoresArrayString);
-    
+
     // show current highscores
     showHighScores();
 }
 
 // function to show high scores
 var i = 0;
+
 function showHighScores() {
 
     startDiv.style.display = "none";
     timer.style.display = "none";
-    questionDiv.style.display = "none";
+    questionSectionEL.style.display = "none";
     timesUp.style.display = "none";
     summary.style.display = "none";
     highScoreSection.style.display = "block";
@@ -240,20 +244,18 @@ choiceB.addEventListener("click", chooseB);
 choiceC.addEventListener("click", chooseC);
 choiceD.addEventListener("click", chooseD);
 
-submitInitialBtn.addEventListener("click", function(event){ 
+submitInitialBtn.addEventListener("click", function (event) {
     storeHighScores(event);
 });
 
-viewHighScore.addEventListener("click", function(event) { 
-    showHighScores(event);
-});
+viewHighScore.addEventListener("click", showHighScores);
 
-goBackBtn.addEventListener("click", function() {
+goBackBtn.addEventListener("click", function () {
     startDiv.style.display = "block";
     highScoreSection.style.display = "none";
 });
 
-clearHighScoreBtn.addEventListener("click", function(){
+clearHighScoreBtn.addEventListener("click", function () {
     window.localStorage.removeItem("high scores");
     listOfHighScores.innerHTML = "High Scores Cleared!";
     listOfHighScores.setAttribute("style", "font-family: 'Archivo', sans-serif; font-style: italic;")
